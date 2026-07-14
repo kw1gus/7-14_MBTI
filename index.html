@@ -68,9 +68,7 @@
     padding:26px 26px 22px;
   }
 
-  .prompt{
-    color:var(--accent);
-  }
+  .prompt{ color:var(--accent); }
   .comment{ color:var(--text-dim); }
 
   h1{
@@ -261,7 +259,7 @@
 </div>
 
 <script>
-/* ---------------- 데이터 ---------------- */
+/* ---------------- 데이터 (12문항) ---------------- */
 
 const questions = [
   { text:"쉬는 시간 10분. 실행할 프로세스를 선택하라.", options:[
@@ -269,12 +267,6 @@ const questions = [
     {label:"단독 대기, 정보 처리 최소화", scores:{I:3}},
     {label:"다음 수업 자료 사전 로딩", scores:{J:2,S:1}},
     {label:"목적 없는 순회, 유휴 상태 진입", scores:{I:2,N:2}},
-  ]},
-  { text:"급식 대기열이 예상보다 길다. 대응 방식은?", options:[
-    {label:"주변과 잡담하며 대기 시간 소모", scores:{E:2,P:1}},
-    {label:"묵묵히 순서를 기다리며 사색", scores:{I:2,N:1}},
-    {label:"예상 대기시간을 계산해봄", scores:{T:2,J:1}},
-    {label:"이어폰 착용, 외부 신호 차단", scores:{I:2,P:1}},
   ]},
   { text:"조별과제 팀 구성이 확정됐다. 첫 반응은?", options:[
     {label:"즉시 리더 역할 자원", scores:{E:2,J:2}},
@@ -300,12 +292,6 @@ const questions = [
     {label:"탐구·실험 기반 모듈", scores:{T:2,N:1}},
     {label:"단독 몰입형 문예·창작 모듈", scores:{I:2,F:1}},
   ]},
-  { text:"축제 당일, 배치될 위치를 선택하라.", options:[
-    {label:"무대 위, 직접 노출되는 역할", scores:{E:3,P:1}},
-    {label:"후방, 기획·세팅 담당", scores:{T:2,J:1}},
-    {label:"현장 순회, 참여형 역할", scores:{E:2,F:1}},
-    {label:"외곽에서 상황 관찰·기록", scores:{I:3,N:1}},
-  ]},
   { text:"진로 수업. 가장 반응하는 주제는?", options:[
     {label:"직접 설계·제작하는 실습 직군", scores:{S:2,T:1}},
     {label:"아직 존재하지 않는 것을 구상하는 직군", scores:{N:3}},
@@ -318,23 +304,11 @@ const questions = [
     {label:"결과보다 과정의 만족 우선", scores:{F:2,P:1}},
     {label:"상대 패턴 분석 후 전략 조정", scores:{T:2,N:1}},
   ]},
-  { text:"미술 시간, 자유 주제 처리 방식은?", options:[
-    {label:"실제 대상을 정밀하게 재현", scores:{S:3}},
-    {label:"내적 이미지를 추상으로 변환", scores:{N:3}},
-    {label:"주변과 아이디어 교환하며 진행", scores:{E:1,F:2}},
-    {label:"외부 차단, 단독 몰입 진행", scores:{I:2,P:1}},
-  ]},
   { text:"실험 결과가 예측과 불일치한다.", options:[
     {label:"원인을 단계적으로 논리 검증", scores:{T:3}},
     {label:"새로운 가설 재수립, 흥미 반응", scores:{N:2,P:1}},
     {label:"기록부터 재정리, 절차 재확인", scores:{S:2,J:1}},
     {label:"조원과 논의하며 공동 해결", scores:{F:2,E:1}},
-  ]},
-  { text:"도서관 자유 시간, 처리할 작업은?", options:[
-    {label:"선호 장르 단독 처리", scores:{I:2,P:1}},
-    {label:"과제 관련 자료 수집 우선", scores:{J:2,T:1}},
-    {label:"동료와 정보 공유하며 진행", scores:{E:2,F:1}},
-    {label:"미탐색 분야로 범위 확장", scores:{N:2}},
   ]},
   { text:"학급 회의, 의견 대립 발생.", options:[
     {label:"즉시 발언, 입장 표명", scores:{E:2,T:1}},
@@ -342,35 +316,11 @@ const questions = [
     {label:"장단점 구조화 후 제안", scores:{T:2,J:1}},
     {label:"절충안 구상, 균형 모색", scores:{F:2,N:1}},
   ]},
-  { text:"수련회 야간 자유시간, 처리 방식은?", options:[
-    {label:"단체 활동에 전원 합류", scores:{E:3}},
-    {label:"소수 인원과 저강도 대화", scores:{I:2,F:1}},
-    {label:"규칙 기반 활동 주도", scores:{J:2,E:1}},
-    {label:"단독 공간에서 정리 시간 확보", scores:{I:3}},
-  ]},
-  { text:"시험 당일, 최종 상태 점검 방식.", options:[
-    {label:"오답노트 최종 재검토", scores:{J:2,S:1}},
-    {label:"준비 완료로 간주, 긴장 해제", scores:{P:2,F:1}},
-    {label:"핵심 개념 구조만 재구성", scores:{N:2,T:1}},
-    {label:"동료와 상태 공유, 심리적 안정 확보", scores:{E:2,F:1}},
-  ]},
-  { text:"방학 기간 운영 계획을 수립하라.", options:[
-    {label:"시간 단위 고정 스케줄 수립", scores:{J:3}},
-    {label:"상태 기반 유동적 운영", scores:{P:3}},
-    {label:"진로 연계 체험·특강 위주 편성", scores:{S:2,J:1}},
-    {label:"신규 경험 탐색 위주 편성", scores:{N:2,P:1}},
-  ]},
   { text:"신학기 첫날, 미확인 환경 진입.", options:[
     {label:"선제적 접촉, 관계 형성 시도", scores:{E:3}},
     {label:"환경 분석 우선, 접촉은 후순위", scores:{I:3}},
     {label:"규칙·정보 확인 우선 처리", scores:{S:2,J:1}},
     {label:"향후 전개 시나리오 예측", scores:{N:2,P:1}},
-  ]},
-  { text:"졸업앨범 촬영 방식을 결정하라.", options:[
-    {label:"과장된 포즈로 주목도 확보", scores:{E:2,P:1}},
-    {label:"절제된 자연스러운 표현", scores:{I:2,S:1}},
-    {label:"서사와 의미를 담은 연출", scores:{N:2,F:1}},
-    {label:"규정된 형식에 맞춰 처리", scores:{S:1,J:2}},
   ]},
   { text:"예고 없는 고난도 질문이 주어졌다.", options:[
     {label:"즉시 응답, 보유 정보로 대응", scores:{E:2,P:1}},
@@ -424,7 +374,7 @@ const results = {
 /* ---------------- 상태 ---------------- */
 let current = 0;
 let scores = {E:0,I:0,S:0,N:0,T:0,F:0,J:0,P:0};
-let history = []; // 각 문항에서 더해진 scores 기록 (뒤로가기용)
+let history = [];
 
 const app = document.getElementById('app');
 
@@ -432,64 +382,50 @@ function renderStart(){
   scores = {E:0,I:0,S:0,N:0,T:0,F:0,J:0,P:0};
   history = [];
   current = 0;
-  app.innerHTML = `
-    <div class="q-index"><span class="prompt">$</span> ./mbti_career_test.sh <span class="comment">--init</span></div>
-    <h1>학교생활 기반 MBTI 진로 분석</h1>
-    <p class="subtitle">교내 20개 상황에 대한 응답 로그를 기반으로 성향 및 진로를 산출한다.</p>
-    <hr class="divider">
-    <div class="info-block">
-      <b>QUESTIONS</b> : 20&nbsp;&nbsp;&nbsp;<b>EST. TIME</b> : 3 min<br>
-      <b>OUTPUT</b> : MBTI 유형 판정 + 진로/과목 매칭 결과
-    </div>
-    <button class="btn" id="startBtn">RUN &gt;&gt;</button>
-  `;
-  document.getElementById('startBtn').onclick = ()=>{ current=0; renderQuestion(); };
+  app.innerHTML = ''
+    + '<div class="q-index"><span class="prompt">$</span> ./mbti_career_test.sh <span class="comment">--init</span></div>'
+    + '<h1>학교생활 기반 MBTI 진로 분석</h1>'
+    + '<p class="subtitle">교내 12개 상황에 대한 응답 로그를 기반으로 성향 및 진로를 산출한다.</p>'
+    + '<hr class="divider">'
+    + '<div class="info-block"><b>QUESTIONS</b> : 12&nbsp;&nbsp;&nbsp;<b>EST. TIME</b> : 2 min<br><b>OUTPUT</b> : MBTI 유형 판정 + 진로/과목 매칭 결과</div>'
+    + '<button class="btn" id="startBtn">RUN &gt;&gt;</button>';
+  document.getElementById('startBtn').onclick = function(){ current = 0; renderQuestion(); };
 }
 
 function renderProgress(){
   const total = questions.length;
   const pctDone = Math.round((current/total)*100);
-  return `
-    <div class="progress-line">PROGRESS ${current}/${total} (${pctDone}%)</div>
-    <div class="bar-track"><div class="bar-fill" style="width:${pctDone}%"></div></div>
-  `;
+  return '<div class="progress-line">PROGRESS ' + current + '/' + total + ' (' + pctDone + '%)</div>'
+    + '<div class="bar-track"><div class="bar-fill" style="width:' + pctDone + '%"></div></div>';
 }
 
 function renderQuestion(){
   const q = questions[current];
-  app.innerHTML = `
-    <div class="topnav">
-      <button class="back-link" id="backBtn" ${current===0?'disabled':''}>&lt; 이전 질문</button>
-      <span class="back-link">Q${current+1}/${questions.length}</span>
-    </div>
-    ${renderProgress()}
-    <div class="q-text">${q.text}<span class="cursor"></span></div>
-    <div class="options">
-      ${q.options.map((opt,i)=>`
-        <button class="opt-btn" data-idx="${i}">
-          <span class="idx">${i+1}.</span>
-          <span>${opt.label}</span>
-        </button>
-      `).join('')}
-    </div>
-  `;
+  let optsHtml = '';
+  for(let i=0;i<q.options.length;i++){
+    optsHtml += '<button class="opt-btn" data-idx="' + i + '"><span class="idx">' + (i+1) + '.</span><span>' + q.options[i].label + '</span></button>';
+  }
+  app.innerHTML = ''
+    + '<div class="topnav"><button class="back-link" id="backBtn" ' + (current===0?'disabled':'') + '>&lt; 이전 질문</button><span class="back-link">Q' + (current+1) + '/' + questions.length + '</span></div>'
+    + renderProgress()
+    + '<div class="q-text">' + q.text + '<span class="cursor"></span></div>'
+    + '<div class="options">' + optsHtml + '</div>';
 
   const backBtn = document.getElementById('backBtn');
   if(backBtn && current>0){
-    backBtn.onclick = ()=>{
+    backBtn.onclick = function(){
       current--;
       const last = history.pop();
-      if(last){
-        for(const key in last){ scores[key]-=last[key]; }
-      }
+      if(last){ for(const key in last){ scores[key] -= last[key]; } }
       renderQuestion();
     };
   }
 
-  document.querySelectorAll('.opt-btn').forEach(btn=>{
-    btn.onclick = ()=>{
-      const opt = q.options[parseInt(btn.dataset.idx)];
-      for(const key in opt.scores){ scores[key]+=opt.scores[key]; }
+  const optBtns = document.querySelectorAll('.opt-btn');
+  optBtns.forEach(function(btn){
+    btn.onclick = function(){
+      const opt = q.options[parseInt(btn.getAttribute('data-idx'))];
+      for(const key in opt.scores){ scores[key] += opt.scores[key]; }
       history.push(opt.scores);
       current++;
       if(current < questions.length){ renderQuestion(); }
@@ -503,7 +439,7 @@ function computeType(){
   const s_n = scores.S >= scores.N ? 'S' : 'N';
   const t_f = scores.T >= scores.F ? 'T' : 'F';
   const j_p = scores.J >= scores.P ? 'J' : 'P';
-  return e_i+s_n+t_f+j_p;
+  return e_i + s_n + t_f + j_p;
 }
 
 function pct(a,b){
@@ -513,13 +449,9 @@ function pct(a,b){
 }
 
 function traitBar(leftLabel, leftPct, rightLabel){
-  return `
-    <div class="trait-row">
-      <span>${leftLabel} ${leftPct}%</span>
-      <div class="trait-track"><div class="trait-fill" style="width:${leftPct}%"></div></div>
-      <span style="text-align:right;">${100-leftPct}% ${rightLabel}</span>
-    </div>
-  `;
+  return '<div class="trait-row"><span>' + leftLabel + ' ' + leftPct + '%</span>'
+    + '<div class="trait-track"><div class="trait-fill" style="width:' + leftPct + '%"></div></div>'
+    + '<span style="text-align:right;">' + (100-leftPct) + '% ' + rightLabel + '</span></div>';
 }
 
 function renderResult(){
@@ -530,51 +462,46 @@ function renderResult(){
   const tfPct = pct(scores.T, scores.F);
   const jpPct = pct(scores.J, scores.P);
 
-  app.innerHTML = `
-    <div class="topnav">
-      <button class="back-link" id="backBtn">&lt; 마지막 질문으로</button>
-      <span class="back-link">RESULT</span>
-    </div>
-    <div class="q-index"><span class="prompt">$</span> analyze --result <span class="comment"># 20/20 응답 완료</span></div>
-    <div class="out-block">
-<span class="rule">-------------------------------------------</span>
-<span class="k">TYPE</span>    : <span class="hl">${type}</span>  (${r.title})
-<span class="k">DESC</span>    : ${r.desc}
-<span class="rule">-------------------------------------------</span>
-<span class="k">CAREER</span>  : ${r.careers.join(', ')}
-<span class="k">SUBJECT</span> : ${r.subjects.join(', ')}
-<span class="rule">-------------------------------------------</span>
-    </div>
+  app.innerHTML = ''
+    + '<div class="topnav"><button class="back-link" id="backBtn">&lt; 마지막 질문으로</button><span class="back-link">RESULT</span></div>'
+    + '<div class="q-index"><span class="prompt">$</span> analyze --result <span class="comment"># 12/12 응답 완료</span></div>'
+    + '<div class="out-block">'
+    + '<span class="rule">-------------------------------------------</span>\n'
+    + '<span class="k">TYPE</span>    : <span class="hl">' + type + '</span>  (' + r.title + ')\n'
+    + '<span class="k">DESC</span>    : ' + r.desc + '\n'
+    + '<span class="rule">-------------------------------------------</span>\n'
+    + '<span class="k">CAREER</span>  : ' + r.careers.join(', ') + '\n'
+    + '<span class="k">SUBJECT</span> : ' + r.subjects.join(', ') + '\n'
+    + '<span class="rule">-------------------------------------------</span>'
+    + '</div>'
+    + '<div style="margin-top:20px;">'
+    + traitBar('E', eiPct, 'I')
+    + traitBar('S', snPct, 'N')
+    + traitBar('T', tfPct, 'F')
+    + traitBar('J', jpPct, 'P')
+    + '</div>'
+    + '<div class="btn-row"><button class="btn ghost" id="retryBtn">./restart</button><button class="btn" id="shareBtn">./copy_result</button></div>'
+    + '<footer class="credit">mbti_career_test.sh &middot; exit 0</footer>';
 
-    <div style="margin-top:20px;">
-      ${traitBar('E', eiPct, 'I')}
-      ${traitBar('S', snPct, 'N')}
-      ${traitBar('T', tfPct, 'F')}
-      ${traitBar('J', jpPct, 'P')}
-    </div>
-
-    <div class="btn-row">
-      <button class="btn ghost" id="retryBtn">./restart</button>
-      <button class="btn" id="shareBtn">./copy_result</button>
-    </div>
-    <footer class="credit">mbti_career_test.sh · exit 0</footer>
-  `;
-
-  document.getElementById('backBtn').onclick = ()=>{
+  document.getElementById('backBtn').onclick = function(){
     current = questions.length - 1;
     const last = history.pop();
-    if(last){ for(const key in last){ scores[key]-=last[key]; } }
+    if(last){ for(const key in last){ scores[key] -= last[key]; } }
     renderQuestion();
   };
   document.getElementById('retryBtn').onclick = renderStart;
-  document.getElementById('shareBtn').onclick = ()=>{
-    const text = `[학교생활 MBTI 진로테스트]\nTYPE: ${type} (${r.title})\nCAREER: ${r.careers.join(', ')}`;
-    navigator.clipboard?.writeText(text).then(()=>{
-      const btn = document.getElementById('shareBtn');
-      const old = btn.innerText;
-      btn.innerText = 'copied.';
-      setTimeout(()=>{ btn.innerText = old; }, 1500);
-    }).catch(()=>{ alert(text); });
+  document.getElementById('shareBtn').onclick = function(){
+    const text = '[학교생활 MBTI 진로테스트]\nTYPE: ' + type + ' (' + r.title + ')\nCAREER: ' + r.careers.join(', ');
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){
+        const btn = document.getElementById('shareBtn');
+        const old = btn.innerText;
+        btn.innerText = 'copied.';
+        setTimeout(function(){ btn.innerText = old; }, 1500);
+      }).catch(function(){ alert(text); });
+    } else {
+      alert(text);
+    }
   };
 }
 
